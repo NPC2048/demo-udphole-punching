@@ -1,6 +1,7 @@
 package com.liangyuelong.demoudpholepunching.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,18 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccessController {
 
     @GetMapping("/")
-    public String access(HttpServletRequest request) {
+    public String access(HttpServletRequest request, HttpServletResponse response) {
         System.out.println(request.getRemoteAddr());
         System.out.println(request.getRemoteHost());
         System.out.println(request.getRemotePort());
+        request.getLocalPort();
         return """
                 您的IP地址是：%s
                 您的主机名是：%s
                 您的端口号是：%d
+                LocalAddr: %s
+                LocalPort: %d
                 """.formatted(
                 request.getRemoteAddr(),
                 request.getRemoteHost(),
-                request.getRemotePort()
+                request.getRemotePort(),
+                request.getLocalAddr(),
+                request.getLocalPort()
         );
     }
 
