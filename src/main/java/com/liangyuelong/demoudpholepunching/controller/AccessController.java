@@ -1,7 +1,6 @@
 package com.liangyuelong.demoudpholepunching.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccessController {
 
     @GetMapping("/")
-    public String access(HttpServletRequest request, HttpServletResponse response) {
+    public String access(HttpServletRequest request) {
         System.out.println(request.getRemoteAddr());
         System.out.println(request.getRemoteHost());
         System.out.println(request.getRemotePort());
